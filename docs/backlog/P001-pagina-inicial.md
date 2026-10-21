@@ -75,7 +75,7 @@ Plain HTML/CSS/JS in site/, no framework, no build, no npm.
    - Structure the code so adding another app section later is a small change.
    - No secrets anywhere in site/.
 3. deploy/publish.ps1 (PowerShell 5.1 compatible, no &&): copy site/ to the QNAP Web share
-   \\192.168.108.5\Web with robocopy, print what changed, fail clearly if the share is
+   \\grassinas\Web with robocopy, print what changed, fail clearly if the share is
    unreachable. Do NOT use /MIR at the share root (it would delete other files there, e.g.
    the _antigo/ folder); copy/overwrite only the portal files. Note in README how to run it.
 4. Local check: explain how to preview (e.g. `python -m http.server 8090` inside site/ and open

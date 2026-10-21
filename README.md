@@ -27,7 +27,7 @@ compartilhada **`Web`** do NAS. Sem container.
 1. Uma vez: garantir que o Web Server está ligado (Painel de Controle → Aplicações → Web
    Server) e guardar o que existe hoje na pasta `Web` (página antiga) numa subpasta
    `_antigo/`, se quiser manter.
-2. A cada mudança: copiar o conteúdo de `site/` para `\\192.168.108.5\Web` (ou rodar
+2. A cada mudança: copiar o conteúdo de `site/` para `\\grassinas\Web` (ou rodar
    `deploy/publish.ps1`). Vale na hora, não precisa reiniciar nada.
 
 Alternativa guardada em `deploy/docker-compose.yml` (container nginx próprio), caso um dia
