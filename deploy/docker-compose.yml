@@ -1,0 +1,12 @@
+# grassiportal — cole este YAML no Container Station (Applications -> Create).
+# Serve a pasta do NAS como site estático na porta 80. Para atualizar o portal basta copiar
+# os arquivos novos para a pasta; não precisa recriar o container.
+# Pré-requisito: porta 80 livre (Web Server do QNAP desligado).
+services:
+  portal:
+    image: nginx:1.27-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - /share/Container/grassiportal/site:/usr/share/nginx/html:ro
+    restart: unless-stopped
