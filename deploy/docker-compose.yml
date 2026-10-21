@@ -1,3 +1,5 @@
+# ALTERNATIVA NÃO USADA (decisão 2026-10-21): o portal é servido pelo Web Server do QNAP,
+# pasta Web. Este compose fica guardado caso um dia se prefira um container próprio.
 # grassiportal — cole este YAML no Container Station (Applications -> Create).
 # Serve a pasta do NAS como site estático na porta 80. Para atualizar o portal basta copiar
 # os arquivos novos para a pasta; não precisa recriar o container.

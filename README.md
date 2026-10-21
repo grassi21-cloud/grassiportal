@@ -14,16 +14,21 @@ casa. Hoje: **Patri** (um cartão por família) e **Administração** (atalhos).
 ```
 site/                 # tudo o que vai para o NAS (servido como está)
 deploy/
-  docker-compose.yml  # container nginx:alpine na porta 80, servindo a pasta do NAS
-  publish.ps1         # copia site/ para o NAS (criado na P001)
+  publish.ps1         # copia site/ para a pasta Web do NAS (criado na P001)
+  docker-compose.yml  # alternativa (não usada): container nginx próprio na porta 80
 docs/backlog/         # features (Pxxx), uma por arquivo, com spec + prompt do Claude Code
 ```
 
 ## Publicar no NAS
 
-1. Uma vez: criar a pasta `/share/Container/grassiportal/site` no NAS, desligar o Web Server
-   do QNAP (porta 80) e criar a aplicação `grassiportal` no Container Station colando
-   `deploy/docker-compose.yml`.
-2. A cada mudança: copiar o conteúdo de `site/` para `\\192.168.108.5\Container\grassiportal\site`
-   (ou rodar `deploy/publish.ps1`). Não precisa recriar o container — o nginx serve os
-   arquivos novos na hora.
+O portal é servido pelo **Web Server do próprio QNAP** (porta 80), que serve a pasta
+compartilhada **`Web`** do NAS. Sem container.
+
+1. Uma vez: garantir que o Web Server está ligado (Painel de Controle → Aplicações → Web
+   Server) e guardar o que existe hoje na pasta `Web` (página antiga) numa subpasta
+   `_antigo/`, se quiser manter.
+2. A cada mudança: copiar o conteúdo de `site/` para `\\192.168.108.5\Web` (ou rodar
+   `deploy/publish.ps1`). Vale na hora, não precisa reiniciar nada.
+
+Alternativa guardada em `deploy/docker-compose.yml` (container nginx próprio), caso um dia
+o Web Server do QNAP seja desligado.

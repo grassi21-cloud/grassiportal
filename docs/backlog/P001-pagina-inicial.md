@@ -24,7 +24,9 @@ Seções futuras (fotos, viagens, projetos) entram depois — a página já nasc
 
 ## Decisões
 
-- **Estático**: HTML + CSS + JS puro, sem build. Nada roda no NAS além do nginx.
+- **Estático**: HTML + CSS + JS puro, sem build.
+- **Servido pelo Web Server do QNAP** (porta 80, pasta compartilhada `Web`) — sem container
+  (André, 2026-10-21). O conteúdo antigo da pasta `Web` vai para `_antigo/`.
 - **Links montados a partir do endereço digitado** (`location.hostname` + porta), para
   funcionar por `grassinas`, pelo nome completo do Tailscale e pelo IP de casa.
 - **Configuração num arquivo só** (`site/config.js`): endereço do Patri e lista de atalhos.
@@ -72,9 +74,10 @@ Plain HTML/CSS/JS in site/, no framework, no build, no npm.
      (rel="noopener").
    - Structure the code so adding another app section later is a small change.
    - No secrets anywhere in site/.
-3. deploy/publish.ps1 (PowerShell 5.1 compatible, no &&): copy site/ to
-   \\192.168.108.5\Container\grassiportal\site with robocopy /MIR, print what changed,
-   fail clearly if the share is unreachable. Note in README how to run it.
+3. deploy/publish.ps1 (PowerShell 5.1 compatible, no &&): copy site/ to the QNAP Web share
+   \\192.168.108.5\Web with robocopy, print what changed, fail clearly if the share is
+   unreachable. Do NOT use /MIR at the share root (it would delete other files there, e.g.
+   the _antigo/ folder); copy/overwrite only the portal files. Note in README how to run it.
 4. Local check: explain how to preview (e.g. `python -m http.server 8090` inside site/ and open
    http://localhost:8090/?mock). Describe the result at 375 px and wide.
 5. Update docs/backlog/P001 Implementation Log and docs/backlog/index.md (status done),
