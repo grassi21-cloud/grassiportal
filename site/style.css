@@ -1,0 +1,94 @@
+:root {
+  --bg: #f6f7f5;
+  --card: #ffffff;
+  --text: #1c2420;
+  --muted: #667069;
+  --border: #dfe4df;
+  --shadow: 0 1px 3px rgba(0, 0, 0, .06);
+  --shadow-hover: 0 6px 18px rgba(0, 0, 0, .12);
+  --patri: #2e7d4f;
+  --patri-soft: #e4f2ea;
+  --skeleton: #e9ede9;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121714;
+    --card: #1b231e;
+    --text: #e8eee9;
+    --muted: #96a39a;
+    --border: #2a352e;
+    --shadow: 0 1px 3px rgba(0, 0, 0, .4);
+    --shadow-hover: 0 6px 18px rgba(0, 0, 0, .5);
+    --patri: #5cc489;
+    --patri-soft: #1f3327;
+    --skeleton: #243029;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+.top, main { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+.top { padding-top: 40px; padding-bottom: 8px; }
+.top h1 { margin: 0; font-size: 2rem; letter-spacing: -.01em; }
+.top p { margin: 4px 0 0; color: var(--muted); }
+main { padding-bottom: 56px; }
+section { margin-top: 36px; --accent: var(--muted); }
+section.patri { --accent: var(--patri); }
+section h2 {
+  margin: 0 0 14px;
+  font-size: .85rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--accent);
+}
+.grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+.card {
+  display: block;
+  padding: 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  color: inherit;
+  text-decoration: none;
+  transition: transform .15s, box-shadow .15s, border-color .15s;
+}
+.card:hover, .card:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--accent);
+  outline: none;
+}
+.family .name { font-size: 1.25rem; font-weight: 600; }
+.family .code { margin-top: 2px; font-size: .85rem; color: var(--muted); }
+.family { border-left: 4px solid var(--patri); }
+.shortcut {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  box-shadow: none;
+}
+.shortcut .icon { font-size: 1.3rem; }
+.shortcut .label { font-weight: 500; }
+.skeleton {
+  height: 78px;
+  border-radius: 14px;
+  background: var(--skeleton);
+  animation: pulse 1.2s ease-in-out infinite;
+}
+@keyframes pulse { 50% { opacity: .5; } }
+.msg { color: var(--muted); }
+.msg a { color: var(--patri); }
+@media (min-width: 700px) {
+  .top { padding-top: 64px; }
+  .top h1 { font-size: 2.6rem; }
+}

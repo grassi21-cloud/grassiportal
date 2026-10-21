@@ -2,7 +2,7 @@
 
 | Feature | Título | Status |
 |---|---|---|
-| [P001](P001-pagina-inicial.md) | Página inicial: seção Patri (famílias) + Administração | 🔲 backlog |
+| [P001](P001-pagina-inicial.md) | Página inicial: seção Patri (famílias) + Administração | ✅ done |
 
 ## Ideias (sem feature ainda)
 

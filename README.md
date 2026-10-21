@@ -30,5 +30,17 @@ compartilhada **`Web`** do NAS. Sem container.
 2. A cada mudança: copiar o conteúdo de `site/` para `\\grassinas\Web` (ou rodar
    `deploy/publish.ps1`). Vale na hora, não precisa reiniciar nada.
 
+Para publicar: `powershell -ExecutionPolicy Bypass -File deploy\publish.ps1`. Copia só os
+arquivos do portal (sem `/MIR`), então `_antigo/` e o resto da pasta `Web` ficam intactos.
+
+## Pré-visualizar localmente
+
+```
+cd site
+python -m http.server 8090
+```
+
+Abra `http://localhost:8090/?mock` (o `?mock` usa famílias de exemplo, sem precisar do Patri).
+
 Alternativa guardada em `deploy/docker-compose.yml` (container nginx próprio), caso um dia
 o Web Server do QNAP seja desligado.

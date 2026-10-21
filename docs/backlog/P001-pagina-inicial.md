@@ -89,6 +89,16 @@ Plain HTML/CSS/JS in site/, no framework, no build, no npm.
 <details>
 <summary>Implementation Log</summary>
 
-<!-- aguardando execucao -->
+2026-10-21 — implementada.
+
+- `site/config.js`, `index.html`, `style.css`, `app.js`: página "Casa Grassi" com seção Patri
+  (cartões vindos de `/api/portal/families`, skeleton, timeout de 5 s, "Patri indisponível"
+  com retry, `?mock` com Grassi e Demo) e seção Administração (5 atalhos da config).
+  Novas seções: adicionar uma entrada em `SECTIONS` no `app.js`.
+- `deploy/publish.ps1`: robocopy de `site/` para `\\grassinas\Web`, sem `/MIR`, falha com
+  mensagem clara se o share não abre. Salvo com BOM UTF-8 para o PowerShell 5.1 ler os acentos.
+- Verificado: servidor local responde 200 em todos os arquivos, `publish.ps1` sem erros de
+  sintaxe. **Não verificado:** aparência em 375 px / wide e a publicação real no NAS (sem
+  navegador nem acesso ao share nesta sessão) — conferir `http://localhost:8090/?mock`.
 
 </details>
