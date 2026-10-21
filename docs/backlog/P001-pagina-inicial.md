@@ -101,4 +101,6 @@ Plain HTML/CSS/JS in site/, no framework, no build, no npm.
   sintaxe. **Não verificado:** aparência em 375 px / wide e a publicação real no NAS (sem
   navegador nem acesso ao share nesta sessão) — conferir `http://localhost:8090/?mock`.
 
+**Publicado e verificado 2026-10-21:** `deploy/publish.ps1` copiou os 4 arquivos para `\\grassinas\Web`; `http://grassinas` mostra "Casa Grassi", a seção Patri com os cartões Demo e Grassi (depois do deploy da F126 do Patri) e os 5 atalhos de Administração.
+
 </details>
