@@ -17,10 +17,11 @@
 - Feature/bug novo = issue nova (título sem prefixo, 1 label de área + 1 de tipo, adicionada ao projeto 1,
   MoSCoW definido, épico pai se houver, sem assignee).
 - Toda execução (inclusive follow-ups "corrige X") = UM comentário na issue:
-  `### Execução — <data hora> · commit <sha>`, o prompt dentro de `<details>`, depois `**Resultado:**`
-  Dentro do `<details>`: a mensagem do André **e o bloco "Prompt do Claude Code" copiado literalmente
+  `### Execução — <data hora> · commit <sha>`, depois UMA linha visível `**Resumo:** <1 frase>`, depois dois
+  blocos recolhidos: `<details><summary>Prompt</summary>` e `<details><summary>Resultado</summary>`.
+  No `<details>` do Prompt: a mensagem do André **e o bloco "Prompt do Claude Code" copiado literalmente
   da descrição da issue naquele momento** — nunca uma referência a ele (a descrição pode mudar depois).
-  (o que foi feito, arquivos, desvios da spec, o que ficou de fora).
+  No Resultado: o que foi feito, arquivos, testes, desvios da spec, o que ficou de fora.
   Nunca colar senhas, tokens, chaves nem segredos — nem dentro do prompt.
 - Commits dizem `refs #<n>` (nunca "fixes/closes"). Nunca abrir PR. Nunca fazer push — o André faz o push.
   Commit só quando o prompt pedir.
