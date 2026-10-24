@@ -1,8 +1,21 @@
 ---
-status: backlog
-created: 2026-10-23
-title: "P002 · Backup das fotos do iCloud no NAS"
+issue: 2
+legacy_id: P002
+title: Backup das fotos do iCloud no NAS
+status: Backlog
+state: open
+moscow: 
+labels: [portal, nas, business]
+created: 2026-10-24
+closed: 
+url: https://github.com/grassi21-cloud/grassiportal/issues/2
 ---
+
+> gerado a partir da issue #2 — não editar
+
+# Backup das fotos do iCloud no NAS
+
+> Migrada de P002 — spec original: https://github.com/grassi21-cloud/grassiportal/blob/c0b5d699e07b85e53a3c92d0061e483e62bc5cdc/docs/backlog/P002-backup-fotos-icloud.md (criada em 2026-10-23)
 
 # P002 · Backup das fotos do iCloud no NAS
 

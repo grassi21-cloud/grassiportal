@@ -1,8 +1,21 @@
 ---
-status: backlog
-created: 2026-10-23
-title: "P005 · Projetos (Kanban, só leitura)"
+issue: 5
+legacy_id: P005
+title: Projetos (Kanban, só leitura)
+status: Backlog
+state: open
+moscow: 
+labels: [portal, nas, business]
+created: 2026-10-24
+closed: 
+url: https://github.com/grassi21-cloud/grassiportal/issues/5
 ---
+
+> gerado a partir da issue #5 — não editar
+
+# Projetos (Kanban, só leitura)
+
+> Migrada de P005 — spec original: https://github.com/grassi21-cloud/grassiportal/blob/c0b5d699e07b85e53a3c92d0061e483e62bc5cdc/docs/backlog/P005-projetos-kanban.md (criada em 2026-10-23)
 
 # P005 · Projetos (Kanban, só leitura)
 

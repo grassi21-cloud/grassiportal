@@ -1,8 +1,21 @@
 ---
-status: backlog
-created: 2026-10-23
-title: "P003 · Álbuns por viagem"
+issue: 3
+legacy_id: P003
+title: Álbuns por viagem
+status: Backlog
+state: open
+moscow: 
+labels: [portal, nas, business]
+created: 2026-10-24
+closed: 
+url: https://github.com/grassi21-cloud/grassiportal/issues/3
 ---
+
+> gerado a partir da issue #3 — não editar
+
+# Álbuns por viagem
+
+> Migrada de P003 — spec original: https://github.com/grassi21-cloud/grassiportal/blob/c0b5d699e07b85e53a3c92d0061e483e62bc5cdc/docs/backlog/P003-albuns-por-viagem.md (criada em 2026-10-23)
 
 # P003 · Álbuns por viagem
 

@@ -1,8 +1,21 @@
 ---
-status: backlog
-created: 2026-10-21
-title: "P001 · Página inicial: seção Patri (famílias) + Administração"
+issue: 1
+legacy_id: P001
+title: "Página inicial: seção Patri (famílias) + Administração"
+status: Done
+state: closed (completed)
+moscow: 
+labels: [portal, nas, business]
+created: 2026-10-24
+closed: 2026-10-24
+url: https://github.com/grassi21-cloud/grassiportal/issues/1
 ---
+
+> gerado a partir da issue #1 — não editar
+
+# Página inicial: seção Patri (famílias) + Administração
+
+> Migrada de P001 — spec original: https://github.com/grassi21-cloud/grassiportal/blob/c0b5d699e07b85e53a3c92d0061e483e62bc5cdc/docs/backlog/P001-pagina-inicial.md (criada em 2026-10-21)
 
 # P001 · Página inicial
 

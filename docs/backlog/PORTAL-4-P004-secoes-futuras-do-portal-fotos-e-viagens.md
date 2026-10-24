@@ -1,8 +1,21 @@
 ---
-status: backlog
-created: 2026-10-23
-title: "P004 · Seções futuras do portal: Fotos e Viagens"
+issue: 4
+legacy_id: P004
+title: "Seções futuras do portal: Fotos e Viagens"
+status: Backlog
+state: open
+moscow: 
+labels: [portal, nas, business]
+created: 2026-10-24
+closed: 
+url: https://github.com/grassi21-cloud/grassiportal/issues/4
 ---
+
+> gerado a partir da issue #4 — não editar
+
+# Seções futuras do portal: Fotos e Viagens
+
+> Migrada de P004 — spec original: https://github.com/grassi21-cloud/grassiportal/blob/c0b5d699e07b85e53a3c92d0061e483e62bc5cdc/docs/backlog/P004-secoes-fotos-viagens.md (criada em 2026-10-23)
 
 # P004 · Seções futuras do portal: Fotos e Viagens
 

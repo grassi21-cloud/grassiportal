@@ -16,7 +16,7 @@ site/                 # tudo o que vai para o NAS (servido como está)
 deploy/
   publish.ps1         # copia site/ para a pasta Web do NAS (criado na P001)
   docker-compose.yml  # alternativa (não usada): container nginx próprio na porta 80
-docs/backlog/         # features (Pxxx), uma por arquivo, com spec + prompt do Claude Code
+docs/backlog/         # cópia exportada das issues (PORTAL-<n>-<Pxxx>-….md); a fonte é o GitHub Projects
 ```
 
 ## Publicar no NAS
