@@ -25,6 +25,7 @@
   Nunca colar senhas, tokens, chaves nem segredos — nem dentro do prompt.
 - Commits dizem `refs #<n>` (nunca "fixes/closes"). Nunca abrir PR. Nunca fazer push — o André faz o push.
   Commit só quando o prompt pedir.
-- Fechamento (sempre nesta ordem): comentário "verificada em produção" → marcar o checklist → exportar a
-  issue para `docs/backlog` → commitar (refs #n) → Status Done + "Concluída em" → `gh issue close`.
+- Fechamento (sempre nesta ordem): comentário "verificada em produção" → marcar o checklist → Status Done +
+  "Concluída em" → `gh issue close` (mover para Done já fecha) → SÓ ENTÃO exportar a issue para
+  `docs/backlog` (o arquivo registra o estado fechado) → commitar (refs #n).
   Se era o último filho aberto de um épico, fechar o épico também. Cancelada = fechar como "not planned" + arquivar.
