@@ -12,6 +12,9 @@
 - `docs/backlog/PORTAL-*.md` são EXPORTS: nunca criar nem editar à mão (um hook bloqueia). São
   (re)gerados só por `python C:\Users\andre\Projects\Patri\scripts\backlog\export.py --prefix PORTAL`
   quando a feature é fechada.
+- Fluxo do Status no quadro: Backlog (funil de ideias) → Analysis (escolhida como uma das próximas; em
+  refinamento no claude.ai/voz — o chat move para lá) → Ready (spec + prompt na issue) → In Progress (você move
+  quando o André diz "implementa a #N") → Done. Se o cartão ainda estiver em Backlog/Analysis, mova para In Progress.
 - Implementar uma feature: ler a issue primeiro; antes de escrever código, resumir o que vai fazer
   (título + 2-3 frases) e pedir confirmação ao André; só prosseguir após um sim explícito.
 - Feature/bug novo = issue nova (título sem prefixo, 1 label de área + 1 de tipo, adicionada ao projeto 1,
