@@ -1,0 +1,130 @@
+name: Board move
+
+# Command labels ("→ ready" etc.) move the card on the Projetos_Grassi board and vanish.
+# Closing an issue fills "Concluída em" (Status Done comes from the board's native workflow).
+
+on:
+  issues:
+    types: [labeled, closed]
+
+permissions:
+  issues: write
+  contents: read
+
+concurrency:
+  group: board-move-${{ github.repository }}-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  move:
+    if: github.event.action == 'closed' || startsWith(github.event.label.name, '→ ')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        env:
+          PROJECT_TOKEN: ${{ secrets.PROJECT_TOKEN }}
+        with:
+          github-token: ${{ secrets.PROJECT_TOKEN }}
+          script: |
+            if (!process.env.PROJECT_TOKEN) throw new Error('PROJECT_TOKEN secret is missing');
+
+            const OWNER = 'grassi21-cloud';
+            const PROJECT_NUMBER = 1;
+            const STATUS_BY_LABEL = {
+              '→ backlog': 'Backlog',
+              '→ analysis': 'Analysis',
+              '→ ready': 'Ready',
+              '→ in-progress': 'In Progress',
+            };
+            const { owner, repo } = context.repo;
+            const issue = context.payload.issue;
+
+            const proj = (await github.graphql(`
+              query($login: String!, $number: Int!) {
+                user(login: $login) {
+                  projectV2(number: $number) {
+                    id
+                    fields(first: 50) {
+                      nodes {
+                        ... on ProjectV2Field { id name dataType }
+                        ... on ProjectV2SingleSelectField { id name options { id name } }
+                      }
+                    }
+                  }
+                }
+              }`, { login: OWNER, number: PROJECT_NUMBER })).user.projectV2;
+            if (!proj) throw new Error(`Project ${OWNER}/${PROJECT_NUMBER} not found`);
+            const field = (name) => proj.fields.nodes.find((f) => f && f.name === name);
+
+            // Find the issue's item in the project, adding it when missing.
+            const found = (await github.graphql(`
+              query($owner: String!, $repo: String!, $number: Int!) {
+                repository(owner: $owner, name: $repo) {
+                  issue(number: $number) {
+                    id
+                    projectItems(first: 50) { nodes { id project { id } } }
+                  }
+                }
+              }`, { owner, repo, number: issue.number })).repository.issue;
+            let itemId = found.projectItems.nodes.find((n) => n.project.id === proj.id)?.id;
+            if (!itemId) {
+              itemId = (await github.graphql(`
+                mutation($project: ID!, $content: ID!) {
+                  addProjectV2ItemById(input: {projectId: $project, contentId: $content}) { item { id } }
+                }`, { project: proj.id, content: found.id })).addProjectV2ItemById.item.id;
+            }
+
+            if (context.payload.action === 'labeled') {
+              const statusName = STATUS_BY_LABEL[context.payload.label.name];
+              if (!statusName) throw new Error(`Unknown command label: ${context.payload.label.name}`);
+              const status = field('Status');
+              const option = status?.options.find((o) => o.name === statusName);
+              if (!option) throw new Error(`Status option not found: ${statusName}`);
+
+              await github.graphql(`
+                mutation($project: ID!, $item: ID!, $field: ID!, $option: String!) {
+                  updateProjectV2ItemFieldValue(input: {
+                    projectId: $project, itemId: $item, fieldId: $field,
+                    value: {singleSelectOptionId: $option}
+                  }) { projectV2Item { id } }
+                }`, { project: proj.id, item: itemId, field: status.id, option: option.id });
+
+              // Only after the move succeeded: drop every command label (the last one applied wins).
+              const labels = await github.paginate(github.rest.issues.listLabelsOnIssue, {
+                owner, repo, issue_number: issue.number, per_page: 100,
+              });
+              for (const l of labels.filter((l) => l.name.startsWith('→ '))) {
+                await github.rest.issues.removeLabel({ owner, repo, issue_number: issue.number, name: l.name });
+              }
+              core.info(`Issue #${issue.number} moved to ${statusName}`);
+            } else {
+              if (issue.state_reason !== 'completed') {
+                core.info(`Closed as ${issue.state_reason}; leaving Concluída em empty`);
+                return;
+              }
+              const done = field('Concluída em');
+              if (!done) throw new Error('Field "Concluída em" not found');
+              const current = (await github.graphql(`
+                query($item: ID!) {
+                  node(id: $item) {
+                    ... on ProjectV2Item {
+                      fieldValues(first: 50) {
+                        nodes { ... on ProjectV2ItemFieldDateValue { date field { ... on ProjectV2Field { id } } } }
+                      }
+                    }
+                  }
+                }`, { item: itemId })).node.fieldValues.nodes
+                .find((v) => v && v.field && v.field.id === done.id && v.date);
+              if (current) {
+                core.info('Concluída em already set; leaving it');
+                return;
+              }
+              const today = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Sao_Paulo' });
+              await github.graphql(`
+                mutation($project: ID!, $item: ID!, $field: ID!, $date: Date!) {
+                  updateProjectV2ItemFieldValue(input: {
+                    projectId: $project, itemId: $item, fieldId: $field, value: {date: $date}
+                  }) { projectV2Item { id } }
+                }`, { project: proj.id, item: itemId, field: done.id, date: today });
+              core.info(`Concluída em set to ${today}`);
+            }

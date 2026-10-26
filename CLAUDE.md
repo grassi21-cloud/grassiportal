@@ -15,6 +15,9 @@
 - Fluxo do Status no quadro: Backlog (funil de ideias) → Analysis (escolhida como uma das próximas; em
   refinamento no claude.ai/voz — o chat move para lá) → Ready (spec + prompt na issue) → In Progress (você move
   quando o André diz "implementa a #N") → Done. Se o cartão ainda estiver em Backlog/Analysis, mova para In Progress.
+- Mover cartão = pôr a label-comando `→ coluna` (`gh issue edit N --add-label "→ in-progress"`; também `→ backlog`,
+  `→ analysis`, `→ ready`). `.github/workflows/board-move.yml` move o cartão e remove a label. Nunca editar o
+  campo Status direto; Done vem do fechamento da issue (Concluída em é preenchida sozinha).
 - Implementar uma feature: ler a issue primeiro; antes de escrever código, resumir o que vai fazer
   (título + 2-3 frases) e pedir confirmação ao André; só prosseguir após um sim explícito.
 - Feature/bug novo = issue nova (título sem prefixo, 1 label de área + 1 de tipo, adicionada ao projeto 1,
@@ -28,7 +31,7 @@
   Nunca colar senhas, tokens, chaves nem segredos — nem dentro do prompt.
 - Commits dizem `refs #<n>` (nunca "fixes/closes"). Nunca abrir PR. Nunca fazer push — o André faz o push.
   Commit só quando o prompt pedir.
-- Fechamento (sempre nesta ordem): comentário "verificada em produção" → marcar o checklist → Status Done +
-  "Concluída em" → `gh issue close` (mover para Done já fecha) → SÓ ENTÃO exportar a issue para
+- Fechamento (sempre nesta ordem): comentário "verificada em produção" → marcar o checklist → `gh issue close`
+  (Status Done + "Concluída em" vêm sozinhos; conferir no quadro) → SÓ ENTÃO exportar a issue para
   `docs/backlog` (o arquivo registra o estado fechado) → commitar (refs #n).
   Se era o último filho aberto de um épico, fechar o épico também. Cancelada = fechar como "not planned" + arquivar.
