@@ -75,8 +75,20 @@ jobs:
             }
 
             if (context.payload.action === 'labeled') {
-              const statusName = STATUS_BY_LABEL[context.payload.label.name];
-              if (!statusName) throw new Error(`Unknown command label: ${context.payload.label.name}`);
+              // Labels applied together fire one run each; the first run handles them all.
+              // Target = furthest column among the command labels still on the issue; if the
+              // event's label is already gone, an earlier run took care of it.
+              const present = (await github.paginate(github.rest.issues.listLabelsOnIssue, {
+                owner, repo, issue_number: issue.number, per_page: 100,
+              })).map((l) => l.name).filter((n) => n.startsWith('→ '));
+              if (!present.includes(context.payload.label.name)) {
+                core.info('Command label already handled by an earlier run');
+                return;
+              }
+              const order = Object.keys(STATUS_BY_LABEL);
+              const chosen = present.reduce((a, b) => (order.indexOf(b) > order.indexOf(a) ? b : a));
+              const statusName = STATUS_BY_LABEL[chosen];
+              if (!statusName) throw new Error(`Unknown command label: ${chosen}`);
               const status = field('Status');
               const option = status?.options.find((o) => o.name === statusName);
               if (!option) throw new Error(`Status option not found: ${statusName}`);
@@ -89,12 +101,13 @@ jobs:
                   }) { projectV2Item { id } }
                 }`, { project: proj.id, item: itemId, field: status.id, option: option.id });
 
-              // Only after the move succeeded: drop every command label (the last one applied wins).
-              const labels = await github.paginate(github.rest.issues.listLabelsOnIssue, {
-                owner, repo, issue_number: issue.number, per_page: 100,
-              });
-              for (const l of labels.filter((l) => l.name.startsWith('→ '))) {
-                await github.rest.issues.removeLabel({ owner, repo, issue_number: issue.number, name: l.name });
+              // Only after the move succeeded: drop every command label.
+              for (const name of present) {
+                try {
+                  await github.rest.issues.removeLabel({ owner, repo, issue_number: issue.number, name });
+                } catch (e) {
+                  if (e.status !== 404) throw e;
+                }
               }
               core.info(`Issue #${issue.number} moved to ${statusName}`);
             } else {
