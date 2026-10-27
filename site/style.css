@@ -79,6 +79,8 @@ section h2 {
 }
 .shortcut .icon { font-size: 1.3rem; }
 .shortcut .label { font-weight: 500; }
+.shortcut .text { display: flex; flex-direction: column; min-width: 0; }
+.shortcut .desc { font-size: .85rem; color: var(--muted); line-height: 1.35; }
 .skeleton {
   height: 78px;
   border-radius: 14px;

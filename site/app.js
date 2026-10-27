@@ -83,9 +83,9 @@
       });
   }
 
-  // --- Seção Administração ---
-  function renderAdmin(body) {
-    cfg.admin.forEach(function (item) {
+  // --- Seções de atalhos (Casa, Administração) ---
+  function renderLinks(items, body) {
+    items.forEach(function (item) {
       var a = el("a", "card shortcut");
       a.href = item.url || (host + ":" + item.port + (item.path || "/"));
       if (item.external) {
@@ -93,7 +93,10 @@
         a.rel = "noopener";
       }
       a.appendChild(el("span", "icon", item.icon || "🔗"));
-      a.appendChild(el("span", "label", item.label));
+      var text = el("span", "text");
+      text.appendChild(el("span", "label", item.label));
+      if (item.desc) text.appendChild(el("span", "desc", item.desc));
+      a.appendChild(text);
       body.appendChild(a);
     });
   }
@@ -101,7 +104,8 @@
   // Para uma nova aplicação: adicionar uma entrada aqui.
   var SECTIONS = [
     { id: "patri", title: "Patri", render: renderPatri },
-    { id: "admin", title: "Administração", render: renderAdmin }
+    { id: "casa", title: "Casa", render: function (b) { renderLinks(cfg.casa || [], b); } },
+    { id: "admin", title: "Administração", render: function (b) { renderLinks(cfg.admin, b); } }
   ];
 
   document.getElementById("title").textContent = cfg.title;

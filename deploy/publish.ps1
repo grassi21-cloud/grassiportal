@@ -1,7 +1,8 @@
 ﻿# Publica site/ na pasta compartilhada Web do NAS (servida pelo Web Server do QNAP).
 # Uso: powershell -ExecutionPolicy Bypass -File deploy\publish.ps1
 # Copia/sobrescreve só os arquivos do portal. Não usa /MIR: o resto da pasta Web
-# (por exemplo _antigo/) fica intacto.
+# (por exemplo _antigo/) fica intacto. health/ (painel Saúde da Família, publicado
+# por outro projeto) também fica intacta.
 param([string]$Target = "\\grassinas\Web")
 
 $ErrorActionPreference = "Stop"
@@ -17,7 +18,7 @@ if (-not (Test-Path $Target)) {
 }
 
 Write-Host "Publicando $source -> $Target"
-robocopy $source $Target /E /XD _antigo /NJH /NJS /NP /NDL
+robocopy $source $Target /E /XD _antigo health /NJH /NJS /NP /NDL
 # robocopy: códigos 0-7 são sucesso (bit 8 ou mais = erro)
 if ($LASTEXITCODE -ge 8) {
     Write-Error "robocopy falhou (código $LASTEXITCODE)."
