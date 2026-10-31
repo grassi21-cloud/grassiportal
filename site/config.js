@@ -7,7 +7,10 @@ window.PORTAL_CONFIG = {
   // Casa = aplicações estáticas da casa servidas pela porta 80. "url" começando com "/"
   // é relativo à raiz do host digitado (grassinas, nome Tailscale ou IP).
   casa: [
-    { label: "Saúde da Família", url: "/health/", icon: "🩺", desc: "Prontuários, exames e evolução da família" }
+    { label: "Saúde da Família", url: "/health/", icon: "🩺", desc: "Prontuários, exames e evolução da família" },
+    { label: "eWeLink", url: "https://web.ewelink.cc", icon: "💡", desc: "Dispositivos SONOFF", external: true },
+    { label: "Arlo", url: "https://my.arlo.com", icon: "📷", desc: "Câmeras de segurança", external: true },
+    { label: "Google Home", url: "https://home.google.com", icon: "🏠", desc: "Casa conectada do Google", external: true }
   ],
   admin: [
     { label: "Painel do QNAP", port: 8080, path: "/", icon: "🗄️" },
