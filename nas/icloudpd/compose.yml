@@ -1,0 +1,49 @@
+# Backup das fotos do iCloud no NAS (issue #2). Modo CÓPIA: nunca usar --auto-delete
+# nem --keep-icloud-recent-days (o NAS não apaga nada no iCloud nem localmente).
+# Variáveis (${...}) vêm do .env que fica só no NAS, ao lado deste arquivo.
+#
+# Para adicionar a Anastasia: copiar o bloco `icloudpd-andre` inteiro como `icloudpd-anastasia`,
+# trocando container_name, as pastas (iCloud/Anastasia, cookies/anastasia), a porta do host
+# (ex.: 8093) e a variável do Apple ID (ANASTASIA_APPLE_ID).
+
+services:
+  icloudpd-andre:
+    image: icloudpd/icloudpd:1.32.3
+    container_name: icloudpd-andre
+    restart: unless-stopped
+    environment:
+      TZ: America/Sao_Paulo
+    volumes:
+      - /share/Multimedia/iCloud/Andre:/data
+      - /share/Container/icloudpd/andre/cookies:/cookies
+    ports:
+      - "8092:8080" # interface web (senha e código 2FA); só pela rede de casa
+    command:
+      - icloudpd
+      - --directory
+      - /data
+      - --cookie-directory
+      - /cookies
+      - --username
+      - ${ANDRE_APPLE_ID}
+      - --password-provider
+      - webui
+      - --mfa-provider
+      - webui
+      - --size
+      - original
+      - --folder-structure
+      - "{:%Y/%m}"
+      - --set-exif-datetime
+      - --watch-with-interval
+      - "14400"
+      - --smtp-username
+      - ${SMTP_USERNAME}
+      - --smtp-password
+      - ${SMTP_PASSWORD}
+      - --smtp-host
+      - smtp.gmail.com
+      - --smtp-port
+      - "587"
+      - --notification-email
+      - ${NOTIFY_EMAIL}

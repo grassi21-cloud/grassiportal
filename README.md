@@ -16,6 +16,7 @@ site/                 # tudo o que vai para o NAS (servido como está)
 deploy/
   publish.ps1         # copia site/ para a pasta Web do NAS (criado na P001)
   docker-compose.yml  # alternativa (não usada): container nginx próprio na porta 80
+nas/icloudpd/         # backup das fotos do iCloud no NAS: compose.yml, .env.example e runbook (issue #2)
 docs/backlog/         # cópia exportada das issues (PORTAL-<n>-<Pxxx>-….md); a fonte é o GitHub Projects
 ```
 
