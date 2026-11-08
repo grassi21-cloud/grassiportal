@@ -1,0 +1,15 @@
+# Rodar na pasta /share/Container/calendar-sync do NAS (veja o README).
+services:
+  calendar-sync:
+    build: .
+    container_name: calendar-sync
+    restart: unless-stopped
+    # Lê CALENDAR_ICAL_URL do arquivo que existe só no NAS (nunca no repositório).
+    env_file:
+      - calendar-sync.env
+    environment:
+      TZ: America/Sao_Paulo
+      INTERVAL_MINUTES: "15"
+      OUTPUT_PATH: /share/Web/data/calendar.json
+    volumes:
+      - /share/Web/data:/share/Web/data

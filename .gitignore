@@ -1,1 +1,3 @@
 nas/**/.env
+tools/calendar-sync/calendar-sync.env
+calendar-sync.env

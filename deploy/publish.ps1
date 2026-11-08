@@ -2,7 +2,8 @@
 # Uso: powershell -ExecutionPolicy Bypass -File deploy\publish.ps1
 # Copia/sobrescreve só os arquivos do portal. Não usa /MIR: o resto da pasta Web
 # (por exemplo _antigo/) fica intacto. health/ (painel Saúde da Família, publicado
-# por outro projeto) também fica intacta.
+# por outro projeto) e data/ (calendar.json gerado pelo
+# tools/calendar-sync no NAS) também ficam intactas.
 param([string]$Target = "\\grassinas\Web")
 
 $ErrorActionPreference = "Stop"
@@ -18,7 +19,7 @@ if (-not (Test-Path $Target)) {
 }
 
 Write-Host "Publicando $source -> $Target"
-robocopy $source $Target /E /XD _antigo health /NJH /NJS /NP /NDL
+robocopy $source $Target /E /XD _antigo health data /NJH /NJS /NP /NDL
 # robocopy: códigos 0-7 são sucesso (bit 8 ou mais = erro)
 if ($LASTEXITCODE -ge 8) {
     Write-Error "robocopy falhou (código $LASTEXITCODE)."
