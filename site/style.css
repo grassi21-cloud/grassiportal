@@ -94,3 +94,14 @@ section h2 {
   .top { padding-top: 64px; }
   .top h1 { font-size: 2.6rem; }
 }
+.calendar { display: block; }
+.cal-frame {
+  display: block;
+  width: 100%;
+  height: 500px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--card);
+}
+.cal-link { margin: 10px 0 0; }
+.cal-link a { color: var(--patri); font-weight: 500; }

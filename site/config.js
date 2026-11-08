@@ -4,6 +4,8 @@ window.PORTAL_CONFIG = {
   title: "Casa Grassi",
   subtitle: "Aplicações e atalhos da casa",
   patri: { port: 8888 },
+  // Agenda "Family" do Google (privada; só quem tem acesso e está logado no Google vê). O ID não é segredo.
+  calendar: { id: "family09827596762050534852@group.calendar.google.com" },
   // Casa = aplicações estáticas da casa servidas pela porta 80. "url" começando com "/"
   // é relativo à raiz do host digitado (grassinas, nome Tailscale ou IP).
   casa: [

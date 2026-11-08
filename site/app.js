@@ -101,10 +101,36 @@
     });
   }
 
+  // --- Seção Calendário da família (iframe do Google Agenda) ---
+  function renderCalendar(body) {
+    body.className = "calendar";
+    var id = cfg.calendar && cfg.calendar.id;
+    if (!id) {
+      body.appendChild(el("p", "msg", "Agenda não configurada (config.js)."));
+      return;
+    }
+    var q = "src=" + encodeURIComponent(id) +
+      "&ctz=" + encodeURIComponent("America/Sao_Paulo") +
+      "&hl=pt_BR&mode=AGENDA&showTitle=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0";
+    var frame = el("iframe", "cal-frame");
+    frame.src = "https://calendar.google.com/calendar/embed?" + q;
+    frame.title = "Calendário da família";
+    frame.loading = "lazy";
+    body.appendChild(frame);
+    var p = el("p", "cal-link");
+    var a = el("a", null, "Abrir no Google Agenda");
+    a.href = "https://calendar.google.com/calendar/u/0/r/agenda?cid=" + encodeURIComponent(id);
+    a.target = "_blank";
+    a.rel = "noopener";
+    p.appendChild(a);
+    body.appendChild(p);
+  }
+
   // Para uma nova aplicação: adicionar uma entrada aqui.
   var SECTIONS = [
     { id: "patri", title: "Patri", render: renderPatri },
     { id: "casa", title: "Casa", render: function (b) { renderLinks(cfg.casa || [], b); } },
+    { id: "agenda", title: "Calendário da família", render: renderCalendar },
     { id: "admin", title: "Administração", render: function (b) { renderLinks(cfg.admin, b); } }
   ];
 
