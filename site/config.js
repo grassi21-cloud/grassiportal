@@ -5,7 +5,21 @@ window.PORTAL_CONFIG = {
   subtitle: "Aplicações e atalhos da casa",
   patri: { port: 8888 },
   // Agenda "Family" do Google (privada; só quem tem acesso e está logado no Google vê). O ID não é segredo.
-  calendar: { id: "family09827596762050534852@group.calendar.google.com" },
+  // people: cor por pessoa (a primeira cujo "match" aparece no título do evento, sem acento/maiúscula).
+  // "color" vale para o tema claro e "colorDark" para o escuro (ambos com contraste AA).
+  // showDescription: a descrição dos eventos pode ter texto sensível; só aparece se for true.
+  calendar: {
+    id: "family09827596762050534852@group.calendar.google.com",
+    showDescription: false,
+    people: [
+      { name: "Nicolas",   color: "#1565c0", colorDark: "#64b5f6", match: ["nicolas"] },
+      { name: "Anastasia", color: "#c2185b", colorDark: "#f48fb1", match: ["anastasia", "ana"] },
+      { name: "André",     color: "#b45309", colorDark: "#ffb74d", match: ["andré", "andre"] }
+    ],
+    defaultName: "Família",
+    defaultColor: "#5f6b64",
+    defaultColorDark: "#a3b0a8"
+  },
   // Casa = aplicações estáticas da casa servidas pela porta 80. "url" começando com "/"
   // é relativo à raiz do host digitado (grassinas, nome Tailscale ou IP).
   casa: [

@@ -1,0 +1,251 @@
+{
+  "generatedAt": "2026-11-08T19:30:00-03:00",
+  "timezone": "America/Sao_Paulo",
+  "windowStart": "2026-11-01",
+  "windowEnd": "2027-03-08",
+  "events": [
+    {
+      "id": "natacao@demo@2026-11-03",
+      "title": "Natação do Nicolas",
+      "start": "2026-11-03T17:00:00-03:00",
+      "end": "2026-11-03T18:00:00-03:00",
+      "allDay": false,
+      "location": "Clube Pinheiros",
+      "description": ""
+    },
+    {
+      "id": "almoco@demo",
+      "title": "Almoço em família",
+      "start": "2026-11-08T12:30:00-03:00",
+      "end": "2026-11-08T15:00:00-03:00",
+      "allDay": false,
+      "location": "Casa da vovó, Rua das Flores 120",
+      "description": "Levar a sobremesa. (texto fictício; não aparece por padrão)"
+    },
+    {
+      "id": "consulta@demo",
+      "title": "Consulta da Anastasia",
+      "start": "2026-11-09T09:00:00-03:00",
+      "end": "2026-11-09T10:00:00-03:00",
+      "allDay": false,
+      "location": "Clínica Vida",
+      "description": ""
+    },
+    {
+      "id": "dentista@demo",
+      "title": "Dentista do André",
+      "start": "2026-11-09T15:30:00-03:00",
+      "end": "2026-11-09T16:15:00-03:00",
+      "allDay": false,
+      "location": "Av. Paulista, 1000",
+      "description": ""
+    },
+    {
+      "id": "natacao@demo@2026-11-10",
+      "title": "Natação do Nicolas",
+      "start": "2026-11-10T17:00:00-03:00",
+      "end": "2026-11-10T18:00:00-03:00",
+      "allDay": false,
+      "location": "Clube Pinheiros",
+      "description": ""
+    },
+    {
+      "id": "reuniao@demo",
+      "title": "Reunião de pais na escola",
+      "start": "2026-11-11T19:00:00-03:00",
+      "end": "2026-11-11T20:00:00-03:00",
+      "allDay": false,
+      "location": "Escola Nova Geração",
+      "description": ""
+    },
+    {
+      "id": "natacao@demo@2026-11-17",
+      "title": "Natação do Nicolas",
+      "start": "2026-11-17T17:00:00-03:00",
+      "end": "2026-11-17T18:00:00-03:00",
+      "allDay": false,
+      "location": "Clube Pinheiros",
+      "description": ""
+    },
+    {
+      "id": "congresso@demo",
+      "title": "Congresso do André",
+      "start": "2026-11-19T18:00:00-03:00",
+      "end": "2026-11-21T12:00:00-03:00",
+      "allDay": false,
+      "location": "Centro de Convenções",
+      "description": ""
+    },
+    {
+      "id": "natacao@demo@2026-11-24",
+      "title": "Natação do Nicolas",
+      "start": "2026-11-24T17:00:00-03:00",
+      "end": "2026-11-24T18:00:00-03:00",
+      "allDay": false,
+      "location": "Clube Pinheiros",
+      "description": ""
+    },
+    {
+      "id": "vovo@demo",
+      "title": "Aniversário da vovó",
+      "start": "2026-11-25",
+      "end": "2026-11-26",
+      "allDay": true,
+      "location": "",
+      "description": ""
+    },
+    {
+      "id": "natacao@demo@2026-12-01",
+      "title": "Natação do Nicolas",
+      "start": "2026-12-01T17:00:00-03:00",
+      "end": "2026-12-01T18:00:00-03:00",
+      "allDay": false,
+      "location": "Clube Pinheiros",
+      "description": ""
+    },
+    {
+      "id": "natacao@demo@2026-12-08",
+      "title": "Natação do Nicolas",
+      "start": "2026-12-08T17:00:00-03:00",
+      "end": "2026-12-08T18:00:00-03:00",
+      "allDay": false,
+      "location": "Clube Pinheiros",
+      "description": ""
+    },
+    {
+      "id": "natacao@demo@2026-12-15",
+      "title": "Natação do Nicolas",
+      "start": "2026-12-15T17:00:00-03:00",
+      "end": "2026-12-15T18:00:00-03:00",
+      "allDay": false,
+      "location": "Clube Pinheiros",
+      "description": ""
+    },
+    {
+      "id": "corte@demo",
+      "title": "Corte de cabelo do Nicolas",
+      "start": "2026-12-19T14:30:00-03:00",
+      "end": "2026-12-19T15:30:00-03:00",
+      "allDay": false,
+      "location": "Torriton Kids",
+      "description": ""
+    },
+    {
+      "id": "natacao@demo@2026-12-22",
+      "title": "Natação do Nicolas",
+      "start": "2026-12-22T17:00:00-03:00",
+      "end": "2026-12-22T18:00:00-03:00",
+      "allDay": false,
+      "location": "Clube Pinheiros",
+      "description": ""
+    },
+    {
+      "id": "natal@demo",
+      "title": "Natal",
+      "start": "2026-12-25",
+      "end": "2026-12-26",
+      "allDay": true,
+      "location": "",
+      "description": ""
+    },
+    {
+      "id": "gramado@demo",
+      "title": "Viagem para Gramado",
+      "start": "2026-12-26",
+      "end": "2027-01-02",
+      "allDay": true,
+      "location": "Gramado, RS",
+      "description": ""
+    },
+    {
+      "id": "natacao@demo@2026-12-29",
+      "title": "Natação do Nicolas",
+      "start": "2026-12-29T17:00:00-03:00",
+      "end": "2026-12-29T18:00:00-03:00",
+      "allDay": false,
+      "location": "Clube Pinheiros",
+      "description": ""
+    },
+    {
+      "id": "natacao@demo@2027-01-05",
+      "title": "Natação do Nicolas",
+      "start": "2027-01-05T17:00:00-03:00",
+      "end": "2027-01-05T18:00:00-03:00",
+      "allDay": false,
+      "location": "Clube Pinheiros",
+      "description": ""
+    },
+    {
+      "id": "natacao@demo@2027-01-12",
+      "title": "Natação do Nicolas",
+      "start": "2027-01-12T17:00:00-03:00",
+      "end": "2027-01-12T18:00:00-03:00",
+      "allDay": false,
+      "location": "Clube Pinheiros",
+      "description": ""
+    },
+    {
+      "id": "natacao@demo@2027-01-19",
+      "title": "Natação do Nicolas",
+      "start": "2027-01-19T17:00:00-03:00",
+      "end": "2027-01-19T18:00:00-03:00",
+      "allDay": false,
+      "location": "Clube Pinheiros",
+      "description": ""
+    },
+    {
+      "id": "natacao@demo@2027-01-26",
+      "title": "Natação do Nicolas",
+      "start": "2027-01-26T17:00:00-03:00",
+      "end": "2027-01-26T18:00:00-03:00",
+      "allDay": false,
+      "location": "Clube Pinheiros",
+      "description": ""
+    },
+    {
+      "id": "natacao@demo@2027-02-02",
+      "title": "Natação do Nicolas",
+      "start": "2027-02-02T17:00:00-03:00",
+      "end": "2027-02-02T18:00:00-03:00",
+      "allDay": false,
+      "location": "Clube Pinheiros",
+      "description": ""
+    },
+    {
+      "id": "natacao@demo@2027-02-09",
+      "title": "Natação do Nicolas",
+      "start": "2027-02-09T17:00:00-03:00",
+      "end": "2027-02-09T18:00:00-03:00",
+      "allDay": false,
+      "location": "Clube Pinheiros",
+      "description": ""
+    },
+    {
+      "id": "natacao@demo@2027-02-16",
+      "title": "Natação do Nicolas",
+      "start": "2027-02-16T17:00:00-03:00",
+      "end": "2027-02-16T18:00:00-03:00",
+      "allDay": false,
+      "location": "Clube Pinheiros",
+      "description": ""
+    },
+    {
+      "id": "natacao@demo@2027-02-23",
+      "title": "Natação do Nicolas",
+      "start": "2027-02-23T17:00:00-03:00",
+      "end": "2027-02-23T18:00:00-03:00",
+      "allDay": false,
+      "location": "Clube Pinheiros",
+      "description": ""
+    },
+    {
+      "id": "natacao@demo@2027-03-02",
+      "title": "Natação do Nicolas",
+      "start": "2027-03-02T17:00:00-03:00",
+      "end": "2027-03-02T18:00:00-03:00",
+      "allDay": false,
+      "location": "Clube Pinheiros",
+      "description": ""
+    }
+  ]
+}
